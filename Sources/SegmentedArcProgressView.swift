@@ -1,12 +1,13 @@
 //
 //  SegmentedArcProgressView.swift
-//  Zerty Color
+//  SegmentedArcProgressView-iOS
 //
-//  Created by Kevin Machado on 11/06/2018.
+//  Created by Kévin MACHADO on 11/06/2018.
 //  Copyright © 2018 Zerty Color. All rights reserved.
 //
 
 import UIKit
+
 
 public class SegmentedArcProgressView: UIView {
     
@@ -22,7 +23,7 @@ public class SegmentedArcProgressView: UIView {
         }
     }
     
-    var progress: Double? {
+    public var progress: Double? {
         didSet {
             //DispatchQueue.global(qos: .background).async {
             self.layerDraw = self.layerDraw(self.bounds)
@@ -32,13 +33,21 @@ public class SegmentedArcProgressView: UIView {
     }
     
     /// nb of segments drawn of the arc
-    var nbSegments = 5 {
+    public var nbSegments = 5 {
         didSet {
             setNeedsDisplay()
         }
     }
     
     private var layerDraw: CALayer?
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(_ aDecoder:) method not implemented")
+    }
     
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -170,4 +179,3 @@ extension Array: Element where Element: CALayer {
         }
     }
 }
-

@@ -7,12 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EA19EF320CF0FCC0044FC4B /* SegmentedArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19EF220CF0FCC0044FC4B /* SegmentedArcProgressView.swift */; };
 		52D6D9871BEFF229002C0205 /* SegmentedArcProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* SegmentedArcProgressView.framework */; };
-		8933C7851EB5B820000D00A4 /* SegmentedArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* SegmentedArcProgressView.swift */; };
 		8933C7901EB5B82D000D00A4 /* SegmentedArcProgressViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* SegmentedArcProgressViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0EA19F2520CF10290044FC4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EA19F2020CF10280044FC4B /* ExampleProgressView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0EA19EFD20CF10270044FC4B;
+			remoteInfo = ExampleProgressView;
+		};
+		0EA19F2720CF10290044FC4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EA19F2020CF10280044FC4B /* ExampleProgressView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0EA19F1120CF10280044FC4B;
+			remoteInfo = ExampleProgressViewUITests;
+		};
 		52D6D9881BEFF229002C0205 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 52D6D9731BEFF229002C0205 /* Project object */;
@@ -23,9 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EA19EF220CF0FCC0044FC4B /* SegmentedArcProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedArcProgressView.swift; sourceTree = "<group>"; };
+		0EA19F2020CF10280044FC4B /* ExampleProgressView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ExampleProgressView.xcodeproj; path = ExampleProgressView/ExampleProgressView.xcodeproj; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* SegmentedArcProgressView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SegmentedArcProgressView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* SegmentedArcProgressView-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SegmentedArcProgressView-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8933C7841EB5B820000D00A4 /* SegmentedArcProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedArcProgressView.swift; sourceTree = "<group>"; };
 		8933C7891EB5B82A000D00A4 /* SegmentedArcProgressViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedArcProgressViewTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* SegmentedArcProgressView.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SegmentedArcProgressView.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* SegmentedArcProgressViewTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SegmentedArcProgressViewTests.plist; sourceTree = "<group>"; };
@@ -50,9 +65,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EA19F2120CF10280044FC4B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0EA19F2620CF10290044FC4B /* ExampleProgressView.app */,
+				0EA19F2820CF10290044FC4B /* ExampleProgressViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		52D6D9721BEFF229002C0205 = {
 			isa = PBXGroup;
 			children = (
+				0EA19F2020CF10280044FC4B /* ExampleProgressView.xcodeproj */,
 				8933C7811EB5B7E0000D00A4 /* Sources */,
 				8933C7831EB5B7EB000D00A4 /* Tests */,
 				52D6D99C1BEFF38C002C0205 /* Configs */,
@@ -81,7 +106,7 @@
 		8933C7811EB5B7E0000D00A4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8933C7841EB5B820000D00A4 /* SegmentedArcProgressView.swift */,
+				0EA19EF220CF0FCC0044FC4B /* SegmentedArcProgressView.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -172,7 +197,7 @@
 				TargetAttributes = {
 					52D6D97B1BEFF229002C0205 = {
 						CreatedOnToolsVersion = 7.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0940;
 					};
 					52D6D9851BEFF229002C0205 = {
 						CreatedOnToolsVersion = 7.1;
@@ -190,6 +215,12 @@
 			mainGroup = 52D6D9721BEFF229002C0205;
 			productRefGroup = 52D6D97D1BEFF229002C0205 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0EA19F2120CF10280044FC4B /* Products */;
+					ProjectRef = 0EA19F2020CF10280044FC4B /* ExampleProgressView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				52D6D97B1BEFF229002C0205 /* SegmentedArcProgressView-iOS */,
@@ -197,6 +228,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0EA19F2620CF10290044FC4B /* ExampleProgressView.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ExampleProgressView.app;
+			remoteRef = 0EA19F2520CF10290044FC4B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EA19F2820CF10290044FC4B /* ExampleProgressViewUITests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ExampleProgressViewUITests.xctest;
+			remoteRef = 0EA19F2720CF10290044FC4B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		52D6D97A1BEFF229002C0205 /* Resources */ = {
@@ -220,7 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8933C7851EB5B820000D00A4 /* SegmentedArcProgressView.swift in Sources */,
+				0EA19EF320CF0FCC0044FC4B /* SegmentedArcProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +446,7 @@
 		52D6D9941BEFF229002C0205 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Configs/SegmentedArcProgressViewTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -411,6 +460,7 @@
 		52D6D9951BEFF229002C0205 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Configs/SegmentedArcProgressViewTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
