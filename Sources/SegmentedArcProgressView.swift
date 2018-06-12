@@ -23,12 +23,21 @@ public class SegmentedArcProgressView: UIView {
         }
     }
     
+    private var progressionTimer: Timer?
+    
     public var progress: Double? {
         didSet {
-            //DispatchQueue.global(qos: .background).async {
-            self.layerDraw = self.layerDraw(self.bounds)
-            self.setNeedsDisplay()
-            //}
+            if let progress = self.progress {
+                self.animate(from: _animatorProgress ?? 0, to: progress)
+            } else {
+                self.dehighlightIndicator()
+            }
+        }
+    }
+    
+    private var _animatorProgress: Double? {
+        didSet {
+            self.prepareDrawing(then: setNeedsDisplay)
         }
     }
     
@@ -36,6 +45,64 @@ public class SegmentedArcProgressView: UIView {
     public var nbSegments = 5 {
         didSet {
             setNeedsDisplay()
+        }
+    }
+    
+    private func dehighlightIndicator() {
+        self._animatorProgress = nil
+    }
+    
+    private func animate(from startProgress: Double, to endProgress: Double, duration: Double = 0.2) {
+        if self.progressionTimer != nil {
+            self.progressionTimer?.invalidate()
+            self.progressionTimer = nil
+        }
+        if #available(iOSApplicationExtension 10.0, *) {
+            self.progressionTimer = Timer.scheduledTimer(withTimeInterval: 0.04, repeats: true) { (timer) in
+                
+                var isProgressionDone: ((_ currentProgress: Double, _ endProgress: Double) -> Bool)!
+                
+                // should I increment or decrement ?
+                var animatorProgress: Double!
+                if endProgress > startProgress {
+                    isProgressionDone = { $0 >= $1 }
+                    animatorProgress = (self._animatorProgress ?? 0) + 0.02
+                    animatorProgress = min(animatorProgress, endProgress)
+                } else {
+                    isProgressionDone = { $0 <= $1 }
+                    animatorProgress = (self._animatorProgress ?? 0) - 0.02
+                    animatorProgress = max(animatorProgress, endProgress)
+                }
+                
+                // set the new progress
+                self._animatorProgress = animatorProgress
+                
+                // invalidate the timer
+                if isProgressionDone(self._animatorProgress!, endProgress) {
+                    timer.invalidate()
+                }
+            }
+        } else {
+            self._animatorProgress = endProgress
+        }
+        
+    }
+    
+    /// This method calculate all path to prepare for drawing then call the completion block in the main thread.
+    ///
+    /// - parameters:
+    ///     - completion: The block that will be called after calculating all draws.
+    ///         **Called in the main thread.**
+    func prepareDrawing(then completion: @escaping () -> Void) {
+        // 🤟 Access to the UIView.bound within the main thread
+        let bounds = self.bounds
+        
+        // calculate all paths withing the `background` then fire 🎉
+        DispatchQueue.global(qos: .background).async {
+            self.layerDraw = self.layerDraw(bounds)
+            DispatchQueue.main.async {
+                completion()
+            }
         }
     }
     
@@ -52,7 +119,8 @@ public class SegmentedArcProgressView: UIView {
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        self.backgroundColor = UIColor.white
+        // set the background color to `clear`
+        self.backgroundColor = UIColor.clear
         self.backgroundColor?.setFill()
         UIGraphicsGetCurrentContext()!.fill(rect)
         
@@ -92,7 +160,7 @@ public class SegmentedArcProgressView: UIView {
             let sinA = sin(angleA * Double.pi / 180)
             
             var drawingRatio: Double = 1
-            if let progress = self.progress {
+            if let progress = self._animatorProgress {
                 let progressAngle = progress * 180
                 let dist = angleA - progressAngle
                 if abs(dist) < segmentRadiusSpacing {
@@ -143,22 +211,26 @@ public class SegmentedArcProgressView: UIView {
             segmentsPath.append(segmentPath)
         }
         
-        // draw shape with the path above
+        // draw shape (mask) with the path above
         let maskSegmentShapeLayer = CAShapeLayer()
         maskSegmentShapeLayer.path = segmentsPath.cgPath
         
+        // create the gradient and define the mask
         let gradient = CAGradientLayer()
         gradient.mask = maskSegmentShapeLayer
         
+        // configure gradient's colors
         let startGradient = UIColor.cyan
         let halfGradient = UIColor.purple
         let endGradient = UIColor.red
         
+        // configure the gradient
         gradient.colors = [startGradient.cgColor, halfGradient.cgColor, endGradient.cgColor]
         gradient.locations = [0, 0.5, 1]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 0)
         
+        // define the gradient's frame
         gradient.frame = rect
         
         return gradient
