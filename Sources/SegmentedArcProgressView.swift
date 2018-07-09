@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 public class SegmentedArcProgressView: UIView {
     
     var size = CGSize(width: 2, height: 16) {
@@ -22,6 +21,13 @@ public class SegmentedArcProgressView: UIView {
             setNeedsDisplay()
         }
     }
+    
+    /// This array define the location of the checkpoints
+    ///
+    /// Location must be a `Double` between `0` to `1` that represent the progress ratio.
+    var checkpointLocations: [Double] = []
+    
+    private var slotLocation: [CGPoint] = []
     
     private var progressionTimer: Timer?
     
