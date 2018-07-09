@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E29F27E20D05F0B00C1F34A /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29F27D20D05F0B00C1F34A /* StarView.swift */; };
+		0E29F28220D05F3B00C1F34A /* AnimatableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29F28120D05F3B00C1F34A /* AnimatableView.swift */; };
 		0EA19EF320CF0FCC0044FC4B /* SegmentedArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19EF220CF0FCC0044FC4B /* SegmentedArcProgressView.swift */; };
 		52D6D9871BEFF229002C0205 /* SegmentedArcProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* SegmentedArcProgressView.framework */; };
 		8933C7901EB5B82D000D00A4 /* SegmentedArcProgressViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* SegmentedArcProgressViewTests.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		0E29F27D20D05F0B00C1F34A /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
+		0E29F28120D05F3B00C1F34A /* AnimatableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableView.swift; sourceTree = "<group>"; };
 		0EA19EF220CF0FCC0044FC4B /* SegmentedArcProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedArcProgressView.swift; sourceTree = "<group>"; };
 		0EA19F2020CF10280044FC4B /* ExampleProgressView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ExampleProgressView.xcodeproj; path = ExampleProgressView/ExampleProgressView.xcodeproj; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* SegmentedArcProgressView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SegmentedArcProgressView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 			children = (
 				0EA19EF220CF0FCC0044FC4B /* SegmentedArcProgressView.swift */,
 				0E29F27D20D05F0B00C1F34A /* StarView.swift */,
+				0E29F28120D05F3B00C1F34A /* AnimatableView.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E29F28220D05F3B00C1F34A /* AnimatableView.swift in Sources */,
 				0E29F27E20D05F0B00C1F34A /* StarView.swift in Sources */,
 				0EA19EF320CF0FCC0044FC4B /* SegmentedArcProgressView.swift in Sources */,
 			);
