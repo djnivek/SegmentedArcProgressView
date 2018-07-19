@@ -12,9 +12,17 @@ import SegmentedArcProgressView
 class ViewController: UIViewController {
     
     let sliderView = UISlider(frame: CGRect(x: 25, y: 0, width: 200, height: 150))
-    let arcView: SegmentedArcProgressView = {
+//    let arcView: SegmentedArcProgressView = {
+//        let arcRect = CGRect(x: 5, y: 460, width: 355, height: 200)
+//        let progressView = SegmentedArcProgressView(frame: arcRect)
+//        return progressView
+//    }()
+    
+    let arcView: CheckpointSegmentedArcProgressView = {
         let arcRect = CGRect(x: 5, y: 460, width: 355, height: 200)
-        return SegmentedArcProgressView(frame: arcRect)
+        let progressView = CheckpointSegmentedArcProgressView(frame: arcRect)
+        progressView.checkpointLocations = [0.0, 0.2, 0.5, 0.8, 1.0]
+        return progressView
     }()
 
     override func viewDidLoad() {
@@ -29,7 +37,6 @@ class ViewController: UIViewController {
         
         view.addSubview(sliderView)
         view.addSubview(arcView)
-        
     }
     
     @IBAction func updateRatio(_ sender: UIButton) {

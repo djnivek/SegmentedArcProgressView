@@ -16,18 +16,11 @@ public class SegmentedArcProgressView: UIView {
         }
     }
     
-    var margin: Double = 35 {
+    var margin: Double = 60 {
         didSet {
             setNeedsDisplay()
         }
     }
-    
-    /// This array define the location of the checkpoints
-    ///
-    /// Location must be a `Double` between `0` to `1` that represent the progress ratio.
-    var checkpointLocations: [Double] = []
-    
-    private var slotLocation: [CGPoint] = []
     
     private var progressionTimer: Timer?
     
@@ -41,7 +34,7 @@ public class SegmentedArcProgressView: UIView {
         }
     }
     
-    private var _animatorProgress: Double? {
+    var _animatorProgress: Double? {
         didSet {
             self.prepareDrawing(then: setNeedsDisplay)
         }
@@ -112,7 +105,11 @@ public class SegmentedArcProgressView: UIView {
         }
     }
     
-    private var layerDraw: CALayer?
+    private var layerDraw: CALayer? {
+        willSet {
+            layerDraw?.removeFromSuperlayer()
+        }
+    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -121,18 +118,17 @@ public class SegmentedArcProgressView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(_ aDecoder:) method not implemented")
     }
-    
+
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
-        
+
         // set the background color to `clear`
         self.backgroundColor = UIColor.clear
         self.backgroundColor?.setFill()
         UIGraphicsGetCurrentContext()!.fill(rect)
-        
-        layer.removeSublayers()
+
         if let layerDraw = self.layerDraw {
-            layer.addSublayer(layerDraw)
+            self.layer.addSublayer(layerDraw)
         }
     }
     

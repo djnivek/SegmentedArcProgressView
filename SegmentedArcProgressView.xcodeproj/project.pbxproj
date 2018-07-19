@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1C1E5820F3F0BD0059AA18 /* CheckpointSegmentedArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1C1E5720F3F0BD0059AA18 /* CheckpointSegmentedArcProgressView.swift */; };
 		0E29F27E20D05F0B00C1F34A /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29F27D20D05F0B00C1F34A /* StarView.swift */; };
 		0E29F28220D05F3B00C1F34A /* AnimatableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29F28120D05F3B00C1F34A /* AnimatableView.swift */; };
 		0EA19EF320CF0FCC0044FC4B /* SegmentedArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19EF220CF0FCC0044FC4B /* SegmentedArcProgressView.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E1C1E5720F3F0BD0059AA18 /* CheckpointSegmentedArcProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointSegmentedArcProgressView.swift; sourceTree = "<group>"; };
 		0E29F27D20D05F0B00C1F34A /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
 		0E29F28120D05F3B00C1F34A /* AnimatableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableView.swift; sourceTree = "<group>"; };
 		0EA19EF220CF0FCC0044FC4B /* SegmentedArcProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedArcProgressView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		8933C7811EB5B7E0000D00A4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0E1C1E5720F3F0BD0059AA18 /* CheckpointSegmentedArcProgressView.swift */,
 				0EA19EF220CF0FCC0044FC4B /* SegmentedArcProgressView.swift */,
 				0E29F27D20D05F0B00C1F34A /* StarView.swift */,
 				0E29F28120D05F3B00C1F34A /* AnimatableView.swift */,
@@ -277,6 +280,7 @@
 				0E29F28220D05F3B00C1F34A /* AnimatableView.swift in Sources */,
 				0E29F27E20D05F0B00C1F34A /* StarView.swift in Sources */,
 				0EA19EF320CF0FCC0044FC4B /* SegmentedArcProgressView.swift in Sources */,
+				0E1C1E5820F3F0BD0059AA18 /* CheckpointSegmentedArcProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
