@@ -19,6 +19,8 @@ public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
         }
     }
     
+    private var slotSize = CGSize(width: 20.0, height: 20.0)
+    
     private var slots: [AnimatedView] = []
     
     override var _animatorProgress: Double? {
@@ -43,7 +45,7 @@ public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
             for (index, view) in self.slots.enumerated() {
                 let pos = positions[index]
                 view.slotRatioPosition = pos.ratio
-                view.frame = CGRect(origin: pos.point, size: CGSize(width: 10, height: 10))
+                view.frame = CGRect(origin: pos.point, size: slotSize)
             }
         }
     }
@@ -69,8 +71,8 @@ public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
             let distACSlot = cosA * distABSlot
             let distBCSlot = sinA * distABSlot
             let anchorSlot = CGPoint(x: radiusSlot, y: radiusSlot)
-            let segmentSlotPosX = Double(anchorSlot.x) - distACSlot + slotMargin
-            let segmentSlotPosY = Double(anchorSlot.y) - distBCSlot + slotMargin
+            let segmentSlotPosX = Double(anchorSlot.x) - distACSlot + slotMargin - (Double(slotSize.width) / 2)
+            let segmentSlotPosY = Double(anchorSlot.y) - distBCSlot + slotMargin - (Double(slotSize.height) / 2)
             let segmentSlotPos = CGPoint(x: segmentSlotPosX, y: segmentSlotPosY)
             slotsPoint.append((segmentSlotPos, ratio))
         }
