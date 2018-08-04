@@ -246,7 +246,7 @@ extension CALayer {
     }
 }
 
-extension Array: Element where Element: CALayer {
+extension Array where Element == CALayer {
     func removeLayers() {
         self.forEach { (layer) in
             (layer as CALayer).removeFromSuperlayer()
