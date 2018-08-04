@@ -9,7 +9,7 @@
 import UIKit
 
 public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
-    
+
     /// This array define the location of the checkpoints
     ///
     /// Location must be a `Double` between `0` to `1` that represent the progress ratio.
@@ -18,20 +18,20 @@ public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
             self.instantiateViews()
         }
     }
-    
+
     public var CheckpointViewType: AnimatedView.Type = StarView.self
-    
+
     private var slotSize = CGSize(width: 20.0, height: 20.0)
-    
+
     private var slots: [AnimatedView] = []
-    
+
     override var _animatorProgress: Double? {
         didSet {
             self.updateAnimationStatus()
             self.prepareDrawing(then: setNeedsDisplay)
         }
     }
-    
+
     private var _lastBounds = CGRect.zero
     private func hasBoundChanged(rect: CGRect) -> Bool {
         defer {
@@ -39,7 +39,7 @@ public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
         }
         return rect != _lastBounds
     }
-    
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         if hasBoundChanged(rect: bounds) {
@@ -51,7 +51,7 @@ public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
             }
         }
     }
-    
+
     private func updateAnimationStatus() {
         guard let progression = self._animatorProgress else { return }
         let slotsToAnimateIfNeeded = self.slots.filter({$0.slotRatioPosition <= progression})
@@ -59,14 +59,14 @@ public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
         slotsToAnimateIfNeeded.forEach({$0.animate()})
         slotsToRewindIfNeeded.forEach({$0.rewind()})
     }
-    
+
     private func searchSlotPositions(in rect: CGRect) -> [(point: CGPoint, ratio: Double)] {
         var slotsPoint = [(CGPoint, Double)]()
         for ratio in self.checkpointLocations {
             let angleA = Double(180) * ratio
             let cosA = cos(angleA * Double.pi / 180)
             let sinA = sin(angleA * Double.pi / 180)
-            
+
             let slotMargin = Double(20)
             let radiusSlot = (Double(rect.size.width)/2) - slotMargin
             let distABSlot = radiusSlot
@@ -80,7 +80,7 @@ public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
         }
         return slotsPoint
     }
-    
+
     private func instantiateViews() {
         self.slots.forEach { $0.removeFromSuperview() }
         self.slots.removeAll()
@@ -91,5 +91,5 @@ public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
             self.slots.append(view)
         }
     }
-    
+
 }
