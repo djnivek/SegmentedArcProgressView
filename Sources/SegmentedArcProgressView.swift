@@ -116,7 +116,7 @@ public class SegmentedArcProgressView: UIView {
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(_ aDecoder:) method not implemented")
+        super.init(coder: aDecoder)
     }
 
     public override func draw(_ rect: CGRect) {
