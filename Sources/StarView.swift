@@ -33,7 +33,7 @@ public class StarView: AnimatedView {
             self.progressionTimer?.invalidate()
             self.progressionTimer = nil
         }
-        if #available(iOSApplicationExtension 10.0, *) {
+        if #available(iOS 10.0, *) {
             self.progressionTimer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { (timer) in
                 
                 var isProgressionDone: ((_ currentProgress: Double, _ endProgress: Double) -> Bool)!
