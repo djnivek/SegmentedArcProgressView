@@ -19,6 +19,8 @@ public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
         }
     }
     
+    public var CheckpointViewType: AnimatedView.Type = StarView.self
+    
     private var slotSize = CGSize(width: 20.0, height: 20.0)
     
     private var slots: [AnimatedView] = []
@@ -84,7 +86,7 @@ public class CheckpointSegmentedArcProgressView: SegmentedArcProgressView {
         self.slots.removeAll()
         // instantiate and attach the checkpoint views to the parent view.
         for _ in 1...self.checkpointLocations.count {
-            let view = StarView(frame: CGRect.zero)
+            let view = CheckpointViewType.init(frame: .zero)
             self.addSubview(view)
             self.slots.append(view)
         }
