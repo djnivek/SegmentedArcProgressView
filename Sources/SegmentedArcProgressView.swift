@@ -56,7 +56,7 @@ public class SegmentedArcProgressView: UIView {
             self.progressionTimer?.invalidate()
             self.progressionTimer = nil
         }
-        if #available(iOSApplicationExtension 10.0, *) {
+        if #available(iOS 10.0, *) {
             self.progressionTimer = Timer.scheduledTimer(withTimeInterval: 0.04, repeats: true) { (timer) in
                 
                 var isProgressionDone: ((_ currentProgress: Double, _ endProgress: Double) -> Bool)!
@@ -116,7 +116,7 @@ public class SegmentedArcProgressView: UIView {
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(_ aDecoder:) method not implemented")
+        super.init(coder: aDecoder)
     }
 
     public override func draw(_ rect: CGRect) {
@@ -246,7 +246,7 @@ extension CALayer {
     }
 }
 
-extension Array: Element where Element: CALayer {
+extension Array where Element == CALayer {
     func removeLayers() {
         self.forEach { (layer) in
             (layer as CALayer).removeFromSuperlayer()

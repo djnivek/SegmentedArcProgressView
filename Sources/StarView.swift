@@ -33,7 +33,7 @@ public class StarView: AnimatedView {
             self.progressionTimer?.invalidate()
             self.progressionTimer = nil
         }
-        if #available(iOSApplicationExtension 10.0, *) {
+        if #available(iOS 10.0, *) {
             self.progressionTimer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { (timer) in
                 
                 var isProgressionDone: ((_ currentProgress: Double, _ endProgress: Double) -> Bool)!
@@ -65,25 +65,44 @@ public class StarView: AnimatedView {
         }
     }
     
+    public required init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
+
+        guard let context = UIGraphicsGetCurrentContext() else {
+            fatalError("Unable to get the current context")
+        }
         
-        let roundBezier = UIBezierPath(ovalIn: rect)
+        // initial parameters
+        let centerPoint = CGPoint(x: rect.width/2, y: rect.height/2)
+        let radius = rect.width / 2
         
-        let roundShape = CAShapeLayer()
-        roundShape.path = roundBezier.cgPath
-        roundShape.lineWidth = 2
-        roundShape.fillColor = UIColor.clear.cgColor
-        roundShape.strokeColor = UIColor.red.cgColor
+        // configure context
+        context.setLineWidth(2)
+        context.setFillColor(UIColor.orange.cgColor)
         
-        let fillRoundShape = CAShapeLayer()
-        fillRoundShape.path = roundBezier.cgPath
-        fillRoundShape.fillColor = UIColor.red.cgColor
-        fillRoundShape.opacity = Float(self._animatorProgress)
+        // 144 degrees
+        let theta = 2.0 * Double.pi * (2.0/5.0)
         
-        self.layer.removeSublayers()
-        self.layer.addSublayer(fillRoundShape)
-        self.layer.addSublayer(roundShape)
+        // start from the top
+        context.move(to: CGPoint(x: centerPoint.x, y: centerPoint.y + -radius))
+        
+        // draw all peaks
+        for i in 1...5 {
+            let x = Double(radius) * sin(Double(i) * theta)
+            let y = Double(radius) * cos(Double(i) * theta)
+            context.addLine(to: CGPoint(x: -x+Double(centerPoint.x), y: -y+Double(centerPoint.y)))
+        }
+        
+        context.closePath()
+        context.fillPath()
     }
     
 }
