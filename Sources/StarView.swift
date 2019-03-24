@@ -65,7 +65,7 @@ public class StarView: AnimatedView {
         }
     }
     
-    public override init(frame: CGRect) {
+    public required init(frame: CGRect) {
         super.init(frame: frame)
     }
     
