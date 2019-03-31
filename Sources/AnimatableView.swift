@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class AnimatedView: UIView, AnimatableView {
+open class AnimatedView: UIView, AnimatableView {
     public required override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
