@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SegmentedArcProgressView"
-  s.version      = "0.2"
+  s.version      = "0.2.1"
   s.summary      = "UI Component - Progress View"
   s.description  = <<-DESC
     SegmentedArcProgressView is a UI Component
